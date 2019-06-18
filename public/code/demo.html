@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>demo</title>
+  <style>
+    input {
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <input id='code' type="text">
+  </div>
+  
+
+  <script>
+    var doc = document;
+    var _input = doc.getElementById('code');
+    
+    // function throttle(fn, minDelay, maxDelay) {
+    //   let timer;
+    //   let startTime = new Date();
+    //   return function () {
+    //     const context = this;
+    //     const args = arguments;
+    //     let curTime = new Date();
+    //     clearTimeout(timer);
+    //     if (curTime - startTime >= maxDelay) {
+    //       fn.apply(context, args);
+    //       startTime = curTime;
+    //     } else {
+    //       timer = setTimeout(() => {
+    //         fn.apply(context, args);
+    //       }, minDelay);
+    //     }
+    //   }
+    // }
+  
+    // function listenInput(selector, cb, delay = 150, maxDelay = 1000) {
+    //   const el = document.querySelector(selector);
+    //   if (!el || !cb || typeof cb !== 'function') {
+    //     return false;
+    //   }
+
+    //   let isComposition = false;
+    //   const throttledCB = throttle(cb, delay, maxDelay);
+    //   const compositionstart = () => isComposition = true;
+    //   const compositionend = () => {
+    //     isComposition = false;
+    //     throttledCB(el.value);
+    //   };
+    //   const input = () => {
+    //     if (isComposition) {
+    //       return false;
+    //     }
+    //     throttledCB(el.value);
+    //   }
+
+    //   el.addEventListener('compositionstart', compositionstart);
+    //   el.addEventListener('compositionend', compositionend);
+    //   el.addEventListener('input', input);
+
+    //   return () => {
+    //     el.removeEventListener('compositionstart', compositionstart);
+    //     el.removeEventListener('compositionend', compositionend);
+    //     el.removeEventListener('input', input);
+    //   }
+    // }
+
+    // const removeListener = listenInput('#code', value => console.log(value));
+    _input.addEventListener('focus', function() {
+      console.log('focus', _input.value);
+    });
+    _input.addEventListener('keydown', function () {
+      console.log('keydown', _input.value);
+    });
+    _input.addEventListener('keyup', function() {
+      console.log('keyup', _input.value);
+    });
+    _input.addEventListener('input', function() {
+      console.log('input', _input.value);
+    });
+    _input.addEventListener('change', function () {
+      console.log('change', _input.value);
+    });
+    _input.addEventListener('compositionstart', function () {
+      console.log('compositionstart', _input.value);
+    });
+    _input.addEventListener('compositionupdate', function () {
+      console.log('compositionupdate', _input.value);
+    });
+    _input.addEventListener('compositionend', function () {
+      console.log('compositionend', _input.value);
+    });
+    _input.addEventListener('blur', function () {
+      console.log('blur', _input.value);
+    });
+
+    function HardwarePay() {
+      var billData = 90;
+
+      this.setBillData = function(data) {
+        billData = data;
+        return this;
+      }
+
+      this.getBillData = function() {
+        return billData;
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>kricsleo</title>
+  
+  <subtitle>kricsleo&#39;s blog</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://kricsleo.github.io/"/>
+  <updated>2019-05-16T07:01:13.005Z</updated>
+  <id>https://kricsleo.github.io/</id>
+  
+  <author>
+    <name>kricsleo</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git-hooks</title>
+    <link href="https://kricsleo.github.io/git-hooks/"/>
+    <id>https://kricsleo.github.io/git-hooks/</id>
+    <published>2019-05-15T03:16:57.000Z</published>
+    <updated>2019-05-16T07:01:13.005Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;git-hooks&quot;&gt;&lt;a href=&quot;#git-hooks&quot; class=&quot;headerlink&quot; title=&quot;git hooks&quot;&gt;&lt;/a&gt;git hooks&lt;/h1&gt;&lt;p&gt;现在代码一般都会使用git来进行管理, 其中git hooks(git钩子)是git提供的在代码管理的生命周期中会被触发的一个阶段, 如同react里面组件的生命周期一样, 随着组件的状态的改变, 一些生命周期函数会被触发, 然后可以在触发的时候进行自定义的操作, git 也是如此, 例如我们可以在代码被提交(&lt;code&gt;git commit&lt;/code&gt;)前进行代码的自动检查, 通过了检查才允许提交, 否则提交失败, 然后还有常见的自动化部署也是利用了 git hooks, 当新代码被提交到服务端(&lt;code&gt;git push&lt;/code&gt;)的时候触发git hooks, 然后服务器自动进行重新部署.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="tool" scheme="https://kricsleo.github.io/categories/tool/"/>
+    
+    
+      <category term="git" scheme="https://kricsleo.github.io/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>elasticsearch</title>
+    <link href="https://kricsleo.github.io/elasticsearch/"/>
+    <id>https://kricsleo.github.io/elasticsearch/</id>
+    <published>2019-05-08T02:53:26.000Z</published>
+    <updated>2019-05-10T03:45:33.354Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;elasticsearch&quot;&gt;&lt;a href=&quot;#elasticsearch&quot; class=&quot;headerlink&quot; title=&quot;elasticsearch&quot;&gt;&lt;/a&gt;elasticsearch&lt;/h1&gt;&lt;p&gt;我的博客之前的搜索都是使用的&lt;a href=&quot;https://github.com/alexbruno/hexo-generator-json-content&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;code&gt;hexo-generator-json-content&lt;/code&gt;&lt;/a&gt;这个插件来生成的静态json文件, 在搜索的时候会去请求这个json文件, 里面是整个博客站点的文章数据, 随着博客的数量变多, 这个文件也越来越大, 导致第一次搜索的时候下载这个文件就会出现很长时间的等待, 所以也一直想要优化博客的搜索.&lt;/p&gt;&lt;p&gt;之前做爬虫的时候使用过&lt;a href=&quot;https://www.elastic.co/cn/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;code&gt;elasticsearch&lt;/code&gt;&lt;/a&gt;这个全文检索库, 感觉检索非常方便和快速, 所以这次有时间了就把博客的搜索完全迁移到了es上, 另外还顺带写了一个自动同步 hexo 博客数据到 es 里面的插件&lt;a href=&quot;https://www.npmjs.com/package/hexo-elasticsearch&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;code&gt;hexo-elasticsearch&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="database" scheme="https://kricsleo.github.io/categories/database/"/>
+    
+    
+      <category term="nodejs" scheme="https://kricsleo.github.io/tags/nodejs/"/>
+    
+      <category term="elasticsearch" scheme="https://kricsleo.github.io/tags/elasticsearch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>toLocaleString</title>
+    <link href="https://kricsleo.github.io/toLocalString/"/>
+    <id>https://kricsleo.github.io/toLocalString/</id>
+    <published>2019-04-25T02:04:25.000Z</published>
+    <updated>2019-05-16T06:57:33.861Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;冷门的toLocaleSring&quot;&gt;&lt;a href=&quot;#冷门的toLocaleSring&quot; class=&quot;headerlink&quot; title=&quot;冷门的toLocaleSring&quot;&gt;&lt;/a&gt;冷门的&lt;code&gt;toLocaleSring&lt;/code&gt;&lt;/h1&gt;&lt;p&gt;js 里面除了我们日常使用的api以外, 其实还是有不少大多数人都不知道的很好用的api的, &lt;code&gt;toLocaleString&lt;/code&gt;算一个, 也许你在面试题中看到过用正则来实现数字千位用逗号分隔的做法, 但是如果你能直接说出&lt;code&gt;toLocaleString&lt;/code&gt;, 应该是出乎面试官的意料的, 而它的用法可不止于此.&lt;/p&gt;&lt;p&gt;&lt;code&gt;toLocaleString&lt;/code&gt;方法在&lt;code&gt;Numnber&lt;/code&gt;和&lt;code&gt;Date&lt;/code&gt;类型上都有部署, 实现的作用都是格式化数字或者日期, 返回格式化后的字符串.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="front-end" scheme="https://kricsleo.github.io/categories/front-end/"/>
+    
+    
+      <category term="toLocaleString" scheme="https://kricsleo.github.io/tags/toLocaleString/"/>
+    
+      <category term="国际化" scheme="https://kricsleo.github.io/tags/%E5%9B%BD%E9%99%85%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>input-event</title>
+    <link href="https://kricsleo.github.io/input-event/"/>
+    <id>https://kricsleo.github.io/input-event/</id>
+    <published>2019-04-22T03:14:00.000Z</published>
+    <updated>2019-04-22T06:44:09.036Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;input-元素的事件顺序&quot;&gt;&lt;a href=&quot;#input-元素的事件顺序&quot; class=&quot;headerlink&quot; title=&quot;input 元素的事件顺序&quot;&gt;&lt;/a&gt;input 元素的事件顺序&lt;/h1&gt;&lt;p&gt;h5 的&lt;code&gt;&amp;lt;input /&amp;gt;&lt;/code&gt;组件上有很多的事件, 这次来详细的探究一下它们的触发顺序和使用场景&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="front-end" scheme="https://kricsleo.github.io/categories/front-end/"/>
+    
+    
+      <category term="h5" scheme="https://kricsleo.github.io/tags/h5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>translate-you-might-not-need-redux</title>
+    <link href="https://kricsleo.github.io/translate-you-might-not-need-redux/"/>
+    <id>https://kricsleo.github.io/translate-you-might-not-need-redux/</id>
+    <published>2019-04-15T08:06:39.000Z</published>
+    <updated>2019-05-16T07:01:13.030Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;翻译《You-Might-Not-Need-Redux》&quot;&gt;&lt;a href=&quot;#翻译《You-Might-Not-Need-Redux》&quot; class=&quot;headerlink&quot; title=&quot;翻译《You Might Not Need Redux》&quot;&gt;&lt;/a&gt;翻译《You Might Not Need Redux》&lt;/h1&gt;&lt;p&gt;闲来无事, 翻译下我挺喜欢的一个程序员 &lt;a href=&quot;https://overreacted.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Dan Abromov&lt;/a&gt; 的一篇文章&lt;a href=&quot;https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;《You Might Not Need Redux》&lt;/a&gt;, 因为我对于 redux 的用法也还很浅显, 里面也还存在着错误的用法, 多看看别人的一些优秀的工程, 慢慢会有更好的体会吧.&lt;/p&gt;&lt;p&gt;以下为翻译.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="translation" scheme="https://kricsleo.github.io/categories/translation/"/>
+    
+    
+      <category term="react" scheme="https://kricsleo.github.io/tags/react/"/>
+    
+      <category term="redux" scheme="https://kricsleo.github.io/tags/redux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>web-load-performance</title>
+    <link href="https://kricsleo.github.io/web-load-performance/"/>
+    <id>https://kricsleo.github.io/web-load-performance/</id>
+    <published>2019-04-11T11:26:18.000Z</published>
+    <updated>2019-04-12T06:16:12.245Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;浏览器网页加载性能优化&quot;&gt;&lt;a href=&quot;#浏览器网页加载性能优化&quot; class=&quot;headerlink&quot; title=&quot;浏览器网页加载性能优化&quot;&gt;&lt;/a&gt;浏览器网页加载性能优化&lt;/h1&gt;&lt;p&gt;如何让一个页面加载的更快真是一个亘古不变的话题, 一般来说最主要的衡量点是首屏的展示时间, 或者说是页面从空白到有内容展示这中间的时间间隔, 前前后后研究了很多文章和做法, 其中最核心的一点是要弄清楚&lt;code&gt;html&lt;/code&gt;, &lt;code&gt;css&lt;/code&gt;和&lt;code&gt;js&lt;/code&gt;是如何联合起来影响一个页面最终的呈现过程的.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="front-end" scheme="https://kricsleo.github.io/categories/front-end/"/>
+    
+    
+      <category term="optimize" scheme="https://kricsleo.github.io/tags/optimize/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>toFixed</title>
+    <link href="https://kricsleo.github.io/toFixed/"/>
+    <id>https://kricsleo.github.io/toFixed/</id>
+    <published>2019-03-15T02:41:44.000Z</published>
+    <updated>2019-04-11T06:07:18.822Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;JS-中的-toFixed精度问题&quot;&gt;&lt;a href=&quot;#JS-中的-toFixed精度问题&quot; class=&quot;headerlink&quot; title=&quot;JS 中的 toFixed精度问题&quot;&gt;&lt;/a&gt;JS 中的 &lt;code&gt;toFixed&lt;/code&gt;精度问题&lt;/h1&gt;&lt;p&gt;在关于金额的计算中经常会出现精确到两位小数的情况, 然后如果直接使用js的&lt;code&gt;number.toFixed()&lt;/code&gt;方法其实会导致意想不到的问题, 比如你可以猜一下下面表达式的执行结果&lt;/p&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;0.1&lt;/span&gt; + &lt;span class=&quot;number&quot;&gt;0.2&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(&lt;span class=&quot;number&quot;&gt;1.555&lt;/span&gt;).toFixed(&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="front-end" scheme="https://kricsleo.github.io/categories/front-end/"/>
+    
+    
+      <category term="js怪异事件录" scheme="https://kricsleo.github.io/tags/js%E6%80%AA%E5%BC%82%E4%BA%8B%E4%BB%B6%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>constraint-validation</title>
+    <link href="https://kricsleo.github.io/constraint-validation/"/>
+    <id>https://kricsleo.github.io/constraint-validation/</id>
+    <published>2019-02-25T03:38:04.000Z</published>
+    <updated>2019-02-25T05:09:58.439Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;h5-原生表单校验api&quot;&gt;&lt;a href=&quot;#h5-原生表单校验api&quot; class=&quot;headerlink&quot; title=&quot;h5 原生表单校验api&quot;&gt;&lt;/a&gt;h5 原生表单校验api&lt;/h1&gt;&lt;p&gt;我们通常会对表单的 input 的做各种各样的校验, 比如长度, 大小, 格式等等, 其实在h5中为了方便这些校验原生就有不少的校验类型和方式, 只不过错误提示的样式由于各个浏览器不太一样, 而且无法自定义, 产品和设计一般都不会认可这样的表现, 所以目前还是比较少用到浏览器原生的校验, 不过了解一下还有没有坏处的.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="front-end" scheme="https://kricsleo.github.io/categories/front-end/"/>
+    
+    
+      <category term="h5" scheme="https://kricsleo.github.io/tags/h5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>BFC</title>
+    <link href="https://kricsleo.github.io/BFC/"/>
+    <id>https://kricsleo.github.io/BFC/</id>
+    <published>2019-02-25T00:50:03.000Z</published>
+    <updated>2019-02-25T03:25:33.886Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;BFC-BLOCK-FORMATTING-CONTEXT&quot;&gt;&lt;a href=&quot;#BFC-BLOCK-FORMATTING-CONTEXT&quot; class=&quot;headerlink&quot; title=&quot;BFC (BLOCK FORMATTING CONTEXT)&quot;&gt;&lt;/a&gt;BFC (BLOCK FORMATTING CONTEXT)&lt;/h1&gt;&lt;p&gt;关于 BFC (BLOCK FORMATTING CONTEXT: 块格式化上下文)这个专有名词可能听得不多, 但是在实际的页面布局中实际上却是会经常碰到的, 只是没有特意去注意这个现象而已, 这里记录一下它是如何影响我们的布局的.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="front-end" scheme="https://kricsleo.github.io/categories/front-end/"/>
+    
+    
+      <category term="css" scheme="https://kricsleo.github.io/tags/css/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ES6-map-set-symbol</title>
+    <link href="https://kricsleo.github.io/ES6-map-set-symbol/"/>
+    <id>https://kricsleo.github.io/ES6-map-set-symbol/</id>
+    <published>2019-01-18T02:23:08.000Z</published>
+    <updated>2019-02-26T05:39:51.450Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;ES6中新的数据类型&quot;&gt;&lt;a href=&quot;#ES6中新的数据类型&quot; class=&quot;headerlink&quot; title=&quot;ES6中新的数据类型&quot;&gt;&lt;/a&gt;ES6中新的数据类型&lt;/h1&gt;&lt;p&gt;在ES6里面引入了一些新的数据类型, 包括 &lt;code&gt;Map&lt;/code&gt; / &lt;code&gt;Set&lt;/code&gt; / &lt;code&gt;Symbol&lt;/code&gt; 等等, 这里了解一下他们的用法和使用场景.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="front-end" scheme="https://kricsleo.github.io/categories/front-end/"/>
+    
+    
+      <category term="ES6" scheme="https://kricsleo.github.io/tags/ES6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Proxy</title>
+    <link href="https://kricsleo.github.io/Proxy/"/>
+    <id>https://kricsleo.github.io/Proxy/</id>
+    <published>2019-01-17T10:50:49.000Z</published>
+    <updated>2019-01-21T01:17:25.980Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;拥抱ES6中的新API–Proxy&quot;&gt;&lt;a href=&quot;#拥抱ES6中的新API–Proxy&quot; class=&quot;headerlink&quot; title=&quot;拥抱ES6中的新API–Proxy&quot;&gt;&lt;/a&gt;拥抱ES6中的新API–Proxy&lt;/h1&gt;&lt;p&gt;ES6带来了很多新的方便易用的API, Proxy(代理)就是其中之一, 意思可以理解为对象的代理, 实际上是一个构造函数, 通过这个构造函数我们可以对某个对象进行包装, 然后返回一个新的对象, 然后我们所有对原对象的操作都可以转移到这个新的对象上, 并且我们的操作过程是可以被拦截和过滤的, 这就类似于你请的律师一样, 他会为你处理你的事情, 并在处理的过程中进行一些你设定好的操作, 称为代理.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="front-end" scheme="https://kricsleo.github.io/categories/front-end/"/>
+    
+    
+      <category term="ES6" scheme="https://kricsleo.github.io/tags/ES6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>todo</title>
+    <link href="https://kricsleo.github.io/todo/"/>
+    <id>https://kricsleo.github.io/todo/</id>
+    <published>2019-01-16T08:22:30.000Z</published>
+    <updated>2019-05-15T03:16:39.673Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;TODO&quot;&gt;&lt;a href=&quot;#TODO&quot; class=&quot;headerlink&quot; title=&quot;TODO&quot;&gt;&lt;/a&gt;TODO&lt;/h1&gt;&lt;p&gt;日常TODO&lt;br&gt;
+    
+    </summary>
+    
+      <category term="daily" scheme="https://kricsleo.github.io/categories/daily/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>SASS</title>
+    <link href="https://kricsleo.github.io/SASS/"/>
+    <id>https://kricsleo.github.io/SASS/</id>
+    <published>2018-11-28T05:36:01.000Z</published>
+    <updated>2018-11-28T05:45:31.969Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;SASS-笔记&quot;&gt;&lt;a href=&quot;#SASS-笔记&quot; class=&quot;headerlink&quot; title=&quot;SASS 笔记&quot;&gt;&lt;/a&gt;SASS 笔记&lt;/h1&gt;&lt;p&gt;以前使用 SASS 都比较浅显, 正好最近写的多了, 所以记录一下笔记.&lt;/p&gt;&lt;h2 id=&quot;何为
+      
+    
+    </summary>
+    
+      <category term="front-end" scheme="https://kricsleo.github.io/categories/front-end/"/>
+    
+    
+      <category term="SASS" scheme="https://kricsleo.github.io/tags/SASS/"/>
+    
+      <category term="CSS" scheme="https://kricsleo.github.io/tags/CSS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>http-2.0</title>
+    <link href="https://kricsleo.github.io/http-2-0/"/>
+    <id>https://kricsleo.github.io/http-2-0/</id>
+    <published>2018-11-16T09:00:58.000Z</published>
+    <updated>2018-11-19T01:05:01.665Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;关于-HTTP-2-0&quot;&gt;&lt;a href=&quot;#关于-HTTP-2-0&quot; class=&quot;headerlink&quot; title=&quot;关于 HTTP/2.0&quot;&gt;&lt;/a&gt;关于 HTTP/2.0&lt;/h1&gt;&lt;p&gt;最近折腾了一段时间的 HTTP/2.0, 目前来说国内外很多大厂都已经用上了 HTTP/2.0, 部署起来也很容易, 这里关于协议的一些细节及部署过程做一个记录.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="front-end" scheme="https://kricsleo.github.io/categories/front-end/"/>
+    
+    
+      <category term="HTTP/2.0" scheme="https://kricsleo.github.io/tags/HTTP-2-0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>yahoo-best-practices-for-speeding-up-your-Web-Site</title>
+    <link href="https://kricsleo.github.io/yahoo-best-practices-for-speeding-up-your-Web-Site/"/>
+    <id>https://kricsleo.github.io/yahoo-best-practices-for-speeding-up-your-Web-Site/</id>
+    <published>2018-11-15T08:01:33.000Z</published>
+    <updated>2018-11-15T08:25:02.351Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;yahoo-的网站优化实践军规&quot;&gt;&lt;a href=&quot;#yahoo-的网站优化实践军规&quot; class=&quot;headerlink&quot; title=&quot;yahoo 的网站优化实践军规&quot;&gt;&lt;/a&gt;yahoo 的网站优化实践军规&lt;/h1&gt;&lt;p&gt;yahoo 的网站优化军规已经出来很多年了, 我是最近才看到, 然后做一下笔记, 也比对一下自己现在做的怎么样.&lt;/p&gt;&lt;p&gt;原文地址: &lt;a href=&quot;https://developer.yahoo.com/performance/rules.html?guccounter=1&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Best Practices for Speeding Up Your Web Site&lt;/a&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="front-end" scheme="https://kricsleo.github.io/categories/front-end/"/>
+    
+    
+      <category term="yahoo" scheme="https://kricsleo.github.io/tags/yahoo/"/>
+    
+      <category term="speed" scheme="https://kricsleo.github.io/tags/speed/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>nginx</title>
+    <link href="https://kricsleo.github.io/nginx/"/>
+    <id>https://kricsleo.github.io/nginx/</id>
+    <published>2018-11-08T02:29:02.000Z</published>
+    <updated>2018-11-12T09:18:47.392Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;nginx-的部署与配置笔记&quot;&gt;&lt;a href=&quot;#nginx-的部署与配置笔记&quot; class=&quot;headerlink&quot; title=&quot;nginx 的部署与配置笔记&quot;&gt;&lt;/a&gt;nginx 的部署与配置笔记&lt;/h1&gt;&lt;p&gt;现在很多网站用的都是 nginx 作为代理服务器, 所以为了进行 web 性能的优化, 自然也要折腾一下 nginx 的配置的.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="front-end" scheme="https://kricsleo.github.io/categories/front-end/"/>
+    
+    
+      <category term="nginx" scheme="https://kricsleo.github.io/tags/nginx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>length-of-url</title>
+    <link href="https://kricsleo.github.io/length-of-url/"/>
+    <id>https://kricsleo.github.io/length-of-url/</id>
+    <published>2018-11-07T08:42:49.000Z</published>
+    <updated>2018-11-07T08:52:40.023Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;关于URL长度的笔记&quot;&gt;&lt;a href=&quot;#关于URL长度的笔记&quot; class=&quot;headerlink&quot; title=&quot;关于URL长度的笔记&quot;&gt;&lt;/a&gt;关于URL长度的笔记&lt;/h1&gt;&lt;p&gt;在了解 cookie 的大小限制的时候看到了一片记录关于 URL 长度的博客, 所以收藏了下来.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="front-end" scheme="https://kricsleo.github.io/categories/front-end/"/>
+    
+    
+      <category term="HTTP" scheme="https://kricsleo.github.io/tags/HTTP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>service-worker</title>
+    <link href="https://kricsleo.github.io/service-worker/"/>
+    <id>https://kricsleo.github.io/service-worker/</id>
+    <published>2018-11-04T13:32:46.000Z</published>
+    <updated>2018-11-13T02:10:16.733Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;service-worker&quot;&gt;&lt;a href=&quot;#service-worker&quot; class=&quot;headerlink&quot; title=&quot;service-worker&quot;&gt;&lt;/a&gt;service-worker&lt;/h1&gt;&lt;p&gt;service worker (服务工作线程)可以为网页提供离线访问的功能, 除此之外当然也有&lt;strong&gt;推送通知&lt;/strong&gt;和&lt;strong&gt;后台同步&lt;/strong&gt;的功能, 它是一种 JavaScript 线程, 可以独立在主线程外独立运行, 但是无法直接访问和操作 DOM , 服务工作线程通过响应 postMessage 接口发送的消息来与其控制的页面通信, 页面可在必要时对 DOM 执行操作.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="front-end" scheme="https://kricsleo.github.io/categories/front-end/"/>
+    
+    
+      <category term="service-worker" scheme="https://kricsleo.github.io/tags/service-worker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>web-font</title>
+    <link href="https://kricsleo.github.io/web-font/"/>
+    <id>https://kricsleo.github.io/web-font/</id>
+    <published>2018-11-01T02:11:36.000Z</published>
+    <updated>2018-11-12T11:46:35.237Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;网页字体加载过程及优化&quot;&gt;&lt;a href=&quot;#网页字体加载过程及优化&quot; class=&quot;headerlink&quot; title=&quot;网页字体加载过程及优化&quot;&gt;&lt;/a&gt;网页字体加载过程及优化&lt;/h1&gt;&lt;p&gt;现在很多网站为了视觉效果都在使用在线字体, 系统自带的字体可以直接使用, 但是自定义的在线字体需要通过&lt;code&gt;@font-face&lt;/code&gt;来加载. 这里主要结合我自己的博客的实践来记录一下网页字体的加载过程及优化.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="front-end" scheme="https://kricsleo.github.io/categories/front-end/"/>
+    
+    
+      <category term="css" scheme="https://kricsleo.github.io/tags/css/"/>
+    
+      <category term="web-font" scheme="https://kricsleo.github.io/tags/web-font/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>optimize-my-blog</title>
+    <link href="https://kricsleo.github.io/optimize-my-blog/"/>
+    <id>https://kricsleo.github.io/optimize-my-blog/</id>
+    <published>2018-10-21T06:58:11.000Z</published>
+    <updated>2019-04-24T08:36:30.446Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;hexo主题-MaterialFlow-主题改造&quot;&gt;&lt;a href=&quot;#hexo主题-MaterialFlow-主题改造&quot; class=&quot;headerlink&quot; title=&quot;hexo主题 MaterialFlow 主题改造&quot;&gt;&lt;/a&gt;hexo主题 MaterialFlow 主题改造&lt;/h1&gt;&lt;p&gt;打算对博客的访问速度和样式做一个改版优化.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="front-end" scheme="https://kricsleo.github.io/categories/front-end/"/>
+    
+    
+      <category term="web优化" scheme="https://kricsleo.github.io/tags/web%E4%BC%98%E5%8C%96/"/>
+    
+  </entry>
+  
+</feed>

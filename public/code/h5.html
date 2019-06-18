@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>demo</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta name="apple-touch-fullscreen" content="YES" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <!-- <script src="./vconsole.min.js"></script> -->
+
+</head>
+
+<body>
+    <input id="input" type="file" multiple />
+    <img id="img" src="" alt="">
+    <div id="content"></div>
+    <input type="text" class="input" />
+    <p class="text"></p>
+
+    <script>
+        // variables start
+        const doc = document;
+        // variables end
+
+        // FileReader
+        const Input = doc.getElementById('input');
+        const Img = doc.getElementById('img');
+        const Content = doc.getElementById('content');
+
+        let fileType;
+
+        Input.addEventListener('change', e => {
+            const { target: { files } } = e;
+            console.log(files);
+            Array.from(files).forEach(file => {
+                const fileReader = new FileReader();
+                const fileType = file.type;
+                fileReader.addEventListener('load', res => {
+                    console.log(res);
+                    const { target: { result } } = res;
+                    if (fileType.startsWith('image')) {
+                        Img.src = result;
+                    } else if (fileType.startsWith('text')) {
+                        Content.innerHTML = result;
+                    }
+                });
+                if(fileType.startsWith('image')) {
+                    fileReader.readAsDataURL(file);
+                } else if(fileType.startsWith('text')) {
+                    fileReader.readAsText(file);
+                }
+            });
+        });
+
+        // Proxy
+        const Text = doc.getElementsByClassName('text')[0];
+        const Input2 = doc.getElementsByClassName('input')[0];
+        Input2.addEventListener('input', e => {
+            const { target: { value } } = e;
+            p.text = value;
+        });
+
+        const p = new Proxy({}, {
+            set(target, prop, value) {
+                Text.innerHTML = value;
+                target[prop] = value;
+            }
+        });
+
+        const info = {
+            gender: 'male'
+        }
+
+        const ori = {
+            name: 'ori',
+            info: info
+        }
+        const a = Object.create(ori);
+        const b = Object.create(ori);
+    </script>
+</body>
+
+</html>
