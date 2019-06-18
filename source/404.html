@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>404</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="It&#39;s my personal blog." />
+    <meta name="keywords" content="blog,kricsleo,IT,Web Front End" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <link rel="alternate" href="/atom.xml" title="kricsleo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="It&apos;s my personal blog.">
+    <meta name="keywords" content="blog,kricsleo,IT,Web Front End">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="kricsleo">
+    <meta property="og:url" content="https://kricsleo.github.io/page/3/index.html">
+    <meta property="og:site_name" content="kricsleo">
+    <meta property="og:description" content="It&apos;s my personal blog.">
+    <meta property="og:locale" content="zh-CN">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="kricsleo">
+    <meta name="twitter:description" content="It&apos;s my personal blog.">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            font-family: Roboto Mono, -apple-system, "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", "Microsoft Yahei", sans-serif;
+            overflow: hidden;
+            background-color: #2d323a;
+            color: #ced3d8;
+        }
+
+        .upper,
+        .lower {
+            position: relative;
+            width: 100%;
+            height: 50%;
+            overflow: hidden;
+            transform: rotate(-45deg);
+        }
+
+        .upper {
+            transform-origin: bottom center;
+        }
+
+        .lower {
+            transform-origin: top center;
+        }
+
+        .upper__content,
+        .lower__content {
+            position: absolute;
+            height: 200px;
+            left: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: -180px;
+            font-size: 200px;
+            font-weight: 800;
+            text-align: center;
+            transform: rotate(45deg);
+            transform-origin: center center;
+        }
+
+        .upper__content {
+            bottom: -100px;
+        }
+
+        .lower__content {
+            top: -100px;
+        }
+
+        .swipe {
+            animation: swipe .1s 1;
+        }
+
+        .swipe-reverse {
+            animation: swipe-reverse .1s 1;
+        }
+
+        @keyframes swipe {
+
+            0%,
+            100% {
+                transform: rotate(45deg);
+            }
+
+            50% {
+                transform: translateX(100px) rotate(45deg);
+            }
+        }
+
+        @keyframes swipe-reverse {
+
+            0%,
+            100% {
+                transform: rotate(45deg);
+            }
+
+            50% {
+                transform: translateX(-100px) rotate(45deg);
+            }
+        }
+
+        .cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .cover__line {
+            display: inline-block;
+            transform-origin: center left;
+            transform: rotatez(-45deg);
+            width: 200%;
+            height: 2px;
+            margin: 0px 0;
+        }
+
+        .cover__line.active {
+            animation: blink .1s 1;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 0;
+            }
+
+            50% {
+                background-color: #eee;
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="upper" id="js__upper">
+        <p class="upper__content" id="js__upper__content">404</p>
+    </div>
+    <div class="lower" id="js__lower">
+        <p class="lower__content" id="js__lower__content">404</p>
+    </div>
+    <div class="cover">
+    </div>
+
+    <script>
+        const Line = (function () {
+            const maxWidth = 130;
+            const minWidth = 10;
+            const maxHeight = 5;
+            const minHeight = 1;
+            let index = 0;
+
+            return {
+                createLine(count) {
+                    for (let i = 0; i < count; i++) {
+                        let randomWidth = Math.random() * (maxWidth - minWidth) + minWidth;
+                        let randomHeight = Math.random() * (maxHeight - minHeight) + minHeight;
+                        let randomLeft = Math.random() * (maxWidth - randomWidth);
+                        let dSpan = document.createElement('span');
+                        dSpan.className = 'cover__line';
+                        dSpan.id = index;
+                        dSpan.style.cssText = `width: ${randomWidth}%; height: ${randomHeight}px; margin-left: ${randomLeft}%;`;
+                        document.getElementsByClassName('cover')[0].append(dSpan);
+                        index++;
+                    }
+                },
+                getLine(id) {
+                    return document.getElementById(id);
+                },
+                getLineList() {
+                    return document.getElementsByClassName('cover__line');
+                },
+                getLineCount() {
+                    return index;
+                },
+                showRandomLine(min, max) {
+                    let randomCount = Math.random() * (max - min) + min;
+                    for (let i = 0; i < randomCount; i++) {
+                        const random = Math.random() * (this.getLineCount() - 1);
+                        let randomIndex = Math.round(random);
+                        const dSpan = this.getLine(randomIndex);
+                        dSpan.className = 'cover__line active';
+                        setTimeout(() => {
+                            dSpan.className = 'cover__line';
+                        }, 2e3);
+                    }
+                },
+                run(minInterval, maxInterval, minCount, maxCount) {
+                    let randomInterval = Math.random() * (maxInterval - minInterval) + minInterval;
+                    setTimeout(() => {
+                        this.showRandomLine(minCount, maxCount);
+                        this.run(minInterval, maxInterval, minCount, maxCount);
+                    }, randomInterval);
+                }
+            }
+        })();
+
+        const Logo = (function () {
+            const dUpper = document.getElementById('js__upper');
+            const dLower = document.getElementById('js__lower');
+            const dUpperContent = document.getElementById('js__upper__content');
+            const dLowerContent = document.getElementById('js__lower__content');
+            const minDistance = 20;
+            const maxDistance = 120;
+
+            return {
+                setDividingLine(distance) {
+                    const transform = `rotate(-45deg) translateY(${100 - distance}px)`;
+                    dUpper.style.transform = transform;
+                    dLower.style.transform = transform;
+                    dUpperContent.style.bottom = `-${distance}px`;
+                    dLowerContent.style.top = `-${200 - distance}px`;
+                    dUpperContent.className = 'upper__content swipe';
+                    dLowerContent.className = 'lower__content swipe-reverse';
+                    setTimeout(() => {
+                        dUpperContent.className = 'upper__content';
+                        dLowerContent.className = 'lower__content';
+                    }, 1e3);
+                },
+                run(minInterval, maxInterval) {
+                    let randomInterval = Math.random() * (maxInterval - minInterval) + minInterval;
+                    let randomDistance = Math.random() * (maxDistance - minDistance) + minDistance;
+                    setTimeout(() => {
+                        this.setDividingLine(randomDistance);
+                        this.run(minInterval, maxInterval);
+                    }, randomInterval);
+                }
+            }
+        })()
+
+        // 创建一定数量的线条
+        Line.createLine(100);
+
+        // 启动线条
+        Line.run(100, 3000, 30, 100);
+
+        // 启动 LOGO
+        Logo.run(100, 3000);
+
+    </script>
+</body>
+
+</html>
